@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>マッスルジャンケン 〜 Muscle Janken 〜</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="”googlebot”" content="”noindex”" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap"
+    />
+  </head>
+  <body>
+    <main>
+      <div id="start" class="__content_wrap__">
+        <div class="ttl">
+          マッスルジャンケン
+          <span>〜 Muscle Janken 〜</span>
+          <span class="s_txt">version 2.0</span>
+        </div>
+        <ul class="__common_btn_wrap__">
+          <li>
+            <button class="__common_btn01__ game_start_btn">
+              ゲームスタート
+            </button>
+          </li>
+          <li>
+            <button id="rule_explain_btn" class="__common_btn01__">
+              ルール説明
+            </button>
+          </li>
+        </ul>
+        <div id="rule_explain">
+          <div class="rule_explain_in">
+            <ul>
+              <li>
+                <dl>
+                  <dt>ルール</dt>
+                  <dd>
+                    <span class="txt indent"
+                      >◉相手のHPゲージを
+                      <span class="t_col01">0</span> にすると勝利です</span
+                    >
+                    <span class="txt indent"
+                      >◉相手よりキレのあるマッスルポーズを
+                      <span class="t_col01">4回</span>
+                      決める（ジャンケンで勝つ）と<br />相手にダメージを与えることができます</span
+                    >
+                    <span class="txt indent">◉マッスルポーズは下記参照</span>
+                  </dd>
+                </dl>
+              </li>
+              <li>
+                <dl>
+                  <dt>マッスルポーズ</dt>
+                  <dd>
+                    <ul>
+                      <li>
+                        <dl>
+                          <dt>
+                            <img src="./img/posing02.png" alt="" />
+                          </dt>
+                          <dd>サイドチェスト<br />（グー）</dd>
+                        </dl>
+                      </li>
+                      <li>
+                        <dl>
+                          <dt>
+                            <img src="./img/posing01.png" alt="" />
+                          </dt>
+                          <dd>ダブルバイセップス<br />（チョキ）</dd>
+                        </dl>
+                      </li>
+                      <li>
+                        <dl>
+                          <dt>
+                            <img src="./img/posing03.png" alt="" />
+                          </dt>
+                          <dd>ラットスプレット<br />（パー）</dd>
+                        </dl>
+                      </li>
+                    </ul>
+                  </dd>
+                </dl>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="playing" class="__content_wrap__ playing">
+        <div class="text_wrap">
+          <span id="referee"></span>
+        </div>
+        <div class="posing_field">
+          <ul>
+            <li>
+              <div class="icon_win">
+                <div class="icon_win_in">
+                  <span class="txt">WIN</span>
+                </div>
+              </div>
+              <div id="my_posing_image" class="posing_image">
+                <img src="./img/posing02.png" />
+              </div>
+              <div id="my_posing" class="posing"></div>
+            </li>
+            <li>
+              <div class="icon_win">
+                <div class="icon_win_in">
+                  <span class="txt">WIN</span>
+                </div>
+              </div>
+              <div id="opp_posing_image" class="posing_image">
+                <img src="./img/posing01.png" />
+              </div>
+              <div id="opp_posing" class="posing"></div>
+            </li>
+          </ul>
+        </div>
+        <div class="hp_field">
+          <ul>
+            <li>
+              <span id="player_name" class="name">あなた</span>
+              <div class="hp_wrap">
+                <span id="my_hp"></span>
+              </div>
+            </li>
+            <li>
+              <span class="name">あいて</span>
+              <div class="hp_wrap">
+                <span id="opp_hp"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="posing_select">
+          <ul class="__common_btn_wrap__">
+            <li>
+              <button
+                class="__common_btn01__ posing_select_btn btn01"
+                data-posing="サイドチェスト（グー）"
+                data-int="1"
+              >
+                サイドチェスト（グー）
+              </button>
+            </li>
+            <li>
+              <button
+                class="__common_btn01__ posing_select_btn btn02"
+                data-posing="ダブルバイセップス（チョキ）"
+                data-int="0"
+              >
+                ダブルバイセップス（チョキ）
+              </button>
+            </li>
+            <li>
+              <button
+                class="__common_btn01__ posing_select_btn btn03"
+                data-posing="ラットスプレット（パー）"
+                data-int="2"
+              >
+                ラットスプレット（パー）
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="result" class="__content_wrap__ result">
+        <div class="win">
+          <div class="result_ttl">
+            素晴らしい筋肉です！<br />トレーニングを継続しましょう！
+          </div>
+        </div>
+        <div class="lose">
+          <div class="result_ttl">
+            筋肉のキレが全然足りません。<br />強化したい部位を選び、実践しましょう！！
+          </div>
+          <div id="youtube">
+            <ul class="btn_blk">
+              <li>
+                <button data-parts="胸">胸</button>
+              </li>
+              <li>
+                <button data-parts="肩">肩</button>
+              </li>
+              <li>
+                <button data-parts="背中">背中</button>
+              </li>
+              <li>
+                <button data-parts="上腕二頭筋">力こぶ</button>
+              </li>
+              <li>
+                <button data-parts="上腕三頭筋">二の腕</button>
+              </li>
+              <li>
+                <button data-parts="お腹">お腹</button>
+              </li>
+              <li>
+                <button data-parts="HIIT">脂肪燃焼</button>
+              </li>
+            </ul>
+            <ul class="mov_blk"></ul>
+          </div>
+        </div>
+        <ul class="__common_btn_wrap__">
+          <li>
+            <button class="__common_btn01__ game_start_btn">
+              もう一度プレイ
+            </button>
+          </li>
+          <li>
+            <a href="./janken_tpl.html">
+              <button class="__common_btn01__">ホーム画面に戻る</button>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <div id="auth">
+      <ul id="auth_btn">
+        <li>
+          <button id="upper_login_btn">ログイン</button>
+        </li>
+        <li>
+          <button id="signin_btn">サインイン</button>
+        </li>
+      </ul>
+      <div id="auth_status">
+        <div class="auth_status_in">
+          <span></span>
+          <button id="logout_btn">ログアウト</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="sign_in">
+      <div class="sign_in_in">
+        <p>〜 サインイン 〜</p>
+        <ul>
+          <li>
+            <dl>
+              <dt>ユーザーネーム</dt>
+              <dd>
+                <input type="text" name="signin_name" placeholder="12文字以内（漢字、ひらがな、カナ、英数字）"/>
+                <div class="name_error_msg error_msg"></div>
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <dl>
+              <dt>パスワード</dt>
+              <dd>
+                <input type="password" name="signin_password" placeholder="半角英数字6〜12文字"/>
+                <div class="password_error_msg error_msg"></div>
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <dl>
+              <dt>パスワード（確認）</dt>
+              <dd>
+                <input type="password" name="signin_confirm_password"/>
+                <div class="confirm_password_error_msg error_msg"></div>
+              </dd>
+            </dl>
+          </li>
+        </ul>
+        <div class="btn_wrap">
+          <button id="register_btn">登録</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="login">
+      <div class="login_in">
+        <p>〜 ログイン 〜</p>
+        <ul>
+          <li>
+            <dl>
+              <dt>ユーザーネーム</dt>
+              <dd>
+                <input type="text" name="login_name" placeholder="12文字以内（漢字、ひらがな、カナ、英数字）"/>
+                <div class="login_name_error_msg error_msg"></div>
+              </dd>
+            </dl>
+          </li>
+          <li>
+            <dl>
+              <dt>パスワード</dt>
+              <dd>
+                <input type="password" name="login_password" placeholder="半角英数字6〜12文字"/>
+                <div class="login_password_error_msg error_msg"></div>
+              </dd>
+            </dl>
+          </li>
+        </ul>
+        <div class="btn_wrap">
+          <button id="login_btn">ログイン</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="shutter">
+      <div class="shutter_in">
+        <span class="end">終了！！</span>
+        <span id="timer"></span>
+      </div>
+    </div>
+
+    <div id="overlay"></div>
+
+    <script src="./js/jquery-2.1.3.min.js"></script>
+    <script src="./js/gsap/gsap.min.js"></script>
+    <script src="./js/crypto/crypto.min.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
